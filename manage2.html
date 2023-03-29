@@ -1,0 +1,50 @@
+
+<html>
+<head></head><body>
+
+<table align="center" width="400px" cellpadding="5" cellspacing="5" bgcolor="#E6E6E6"
+border="1" rules="all">
+<tr>
+<td><a href="index.php">Add Student</a></td>
+<td><a href="manage-studentdetail.php">Manage Student</a></td>
+</tr>
+</table>
+<!-- Manage Student Detail -->
+<table align="center" width="500px" cellpadding="5" cellspacing="5" border="1px"
+rules="all">
+<tr>
+<td>S.no</td>
+<td>Name</td>
+<td>Gender</td>
+<td>Department</td>
+<td>Terms</td>
+<td>Edit</td>
+<td>Delete</td>
+</tr>
+<?php
+$i=1;
+$getdata=mysql_query("SELECT * FROM `student_detail`");
+while($row=mysql_fetch_array($getdata))
+{
+?>
+<tr>
+<td><?php echo $i ?></td>
+<td><?php echo $row['name'];?></td>
+<td>
+<?php echo $row['gender'];?>
+</td>
+<td><?php echo $row['department'];?></td>
+<td>
+<?php echo $row['terms'];?>
+</td>
+<td><a href="edit-studentdetail.php?id=<?php echo $row['id']?>">Edit</a></td>
+<td><a href="manage-studentdetail.php?did=<?php echo $row['id']?>">Delete</a></td>
+</tr>
+<?
+$i++;
+}
+?>
+</table>
+
+</body>
+</html>
